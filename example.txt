@@ -1,0 +1,3 @@
+Hello, world!
+This is a simple example of writing text to a file.
+You can write multiple lines like this.
