@@ -78,7 +78,6 @@ def load_sleep_data(filename="sleep_data.csv"):
     return df['Date'].tolist(), df['Sleep Hours'].tolist(), df['Energy Levels'].tolist()
 
 def sleep_tracker():
-    print("\n--- Sleep Tracker ---")
     days_and_months = {
         "january": 31,
         "february": 28,
