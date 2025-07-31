@@ -300,7 +300,7 @@ class HabitTrackerPage(tk.Frame):
         # Title
         title_label = tk.Label(self, text="⭒˚｡⋆‧₊˚✩彡 Habit Tracker", 
                               font=("Arial", 20, "bold"), 
-                            fg='#ecf0f1')
+                            fg="#8661dd")
         title_label.pack(pady=20)
         
         # Add habit section
