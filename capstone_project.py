@@ -302,7 +302,7 @@ def todo_list():
         print("\n--- To-Do List ---")
         print("1. View To-Do List")
         print("2. Add To-Do")
-        print("3. Mark item as compeleted")
+        print("3. Mark item as completed")
         print("4. Go back to main menu")
         try:
             todo_choice = input("Enter a number: ")
