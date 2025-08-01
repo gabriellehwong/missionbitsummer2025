@@ -67,11 +67,16 @@ class MainMenuPage(tk.Frame):
                                # as you can see from this green color, the textbox comes out as green in contrast with the overall purple
                                bg="#96BEE1", fg="#ffffff")    
         
-        title_label.pack(pady=50)
+        title_label.pack(pady=40)
 
         # subtitles
-        subtitle_label = tk.Label(self, text="A digital tracker that helps you log and visualize your sleep patterns, track daily habits, and manage a to-do list to improve your life ⋅˚₊‧ ୨୧ ‧₊˚ ⋅",
-                                  font=("Georgia", 15))
+        cute_symbols = tk.Label(self, text="⋅˚₊‧ ୨୧ ‧₊˚ ⋅",
+                                font=("Georgia", 30),
+                                bg="#96BEE1", fg="#ffffff")
+        cute_symbols.pack(pady=5)
+        subtitle_label = tk.Label(self, text="A digital tracker that helps you log and visualize your sleep patterns, track daily habits, and manage a to-do list to improve your life",
+                                  font=("Georgia", 15),
+                                  bg="#96BEE1", fg="#ffffff")
         subtitle_label.pack(pady=10)
 
         # button frame for nice spacing
@@ -258,15 +263,15 @@ class SleepTrackerPage(tk.Frame):
         # Create new window for chart
         chart_window = tk.Toplevel(self.root)
         chart_window.title("Sleep Chart")
-        chart_window.geometry("800x600")
-        chart_window.configure(bg='#2c3e50')
+        chart_window.geometry("1000x800")
+        chart_window.configure(bg="#ffffff")
         
         # Create matplotlib figure
         fig, (ax1, ax2) = plt.subplots(2, 1, figsize=(10, 8), facecolor='white')
         
         # Sleep hours plot
         # Was able to change the visuals to bar plotting!
-        ax1.bar(dates, hours, color='#3498db')
+        ax1.bar(dates, hours, color='#648ce6')
         ax1.set_title('Sleep Hours Over Time', color='black', fontsize=14, fontweight='bold')
         ax1.set_ylabel('Hours of Sleep', color='white')
         ax1.grid(True, alpha=0.3)
@@ -274,7 +279,7 @@ class SleepTrackerPage(tk.Frame):
         ax1.tick_params(colors='black')
         
         # Energy levels plot
-        ax2.bar(dates, energy, color='#2ecc71')
+        ax2.bar(dates, energy, color='#64e664')
         ax2.set_title('Energy Levels Over Time', color='black', fontsize=14, fontweight='bold')
         ax2.set_ylabel('Energy Level (1-10)', color='black')
         ax2.set_xlabel('Date', color='black')

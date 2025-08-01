@@ -4,7 +4,7 @@ import numpy as np
 import time
 import sys
 import pandas as pd
-import csv 
+import csv
 import os
 
 # sleep tracker lists
