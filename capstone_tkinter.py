@@ -21,12 +21,12 @@ class HabitTrackerApp(tk.Tk):
         tk.Tk.__init__(self, *args, **kwargs)
 
         # configuring the main window
-        self.title("Sleep and Habit Tracker")
-        self.geometry("800x600")
-        self.configure(bg="#221B26")
+        self.title("Better Life")
+        self.geometry("1200x800")
+        self.configure(bg="#96BEE1")
 
         # creating container to hold all the pages
-        container = tk.Frame(self, bg="#221B26")
+        container = tk.Frame(self, bg="#96BEE1")
         container.pack(side="top", fill="both", expand=True)
 
         # configure grid weights so pages can expand properly
@@ -58,125 +58,130 @@ class MainMenuPage(tk.Frame):
 
     def __init__(self, parent, controller):
         tk.Frame.__init__(self, parent)
-        self.configure(bg="#c29bd2")
+        self.configure(bg="#96BEE1")
         self.controller = controller
 
         # Title
-        title_label = tk.Label(self, text="Sleep and Habit Tracker",
-                               font=("Arial", 24, "bold"),
+        title_label = tk.Label(self, text="Better Life",
+                               font=("Georgia", 50, "bold"),
                                # as you can see from this green color, the textbox comes out as green in contrast with the overall purple
-                               bg="#c29bd2", fg="#ecf0f1")    
+                               bg="#96BEE1", fg="#ffffff")    
         
         title_label.pack(pady=50)
 
         # subtitles
-        subtitle_label = tk.Label(self, text="Track your sleep, habits, and to-dos to improve your life ⋅˚₊‧ ୨୧ ‧₊˚ ⋅")
+        subtitle_label = tk.Label(self, text="A digital tracker that helps you log and visualize your sleep patterns, track daily habits, and manage a to-do list to improve your life ⋅˚₊‧ ୨୧ ‧₊˚ ⋅",
+                                  font=("Georgia", 15))
         subtitle_label.pack(pady=10)
 
         # button frame for nice spacing
-        button_frame = tk.Frame(self, bg="#c29bd2")
+        button_frame = tk.Frame(self, bg="#96BEE1")
         button_frame.pack(pady=50)
 
         # navigation buttons - each one switches to a diff page
-        sleep_btn = tk.Button(button_frame, text="ᶻ z 𐰁₊˚⋆ Sleep Tracker",
+        sleep_btn = tk.Button(button_frame, text="⋆｡⟡˚⊹⋆ Sleep Tracker ⋆⊹˚⟡｡⋆",
                               command=lambda: controller.show_frame("SleepTrackerPage"),
-                              font=("Arial", 14, "bold"), fg="#668c5f",
+                              font=("Georgia", 20, "bold"), fg="#648ce6", bg="#ffffff",
                               width=20, height=2)
         sleep_btn.pack(pady=10)
 
-        habit_btn = tk.Button(button_frame, text="⭒˚｡⋆‧₊˚✩彡 Habit Tracker",
+        habit_btn = tk.Button(button_frame, text="⋆｡⟡˚⊹⋆ Habit Tracker ⋆⊹˚⟡｡⋆",
                               command=lambda: controller.show_frame("HabitTrackerPage"),
-                              font=("Arial", 14, "bold"), fg="#668c5f",
+                              font=("Georgia", 20, "bold"), fg="#a064dc", bg="#ffffff",
                               width=20, height=2)
         habit_btn.pack(pady=10)
 
-        todo_btn = tk.Button(button_frame, text="‧₊˚🖇️✩ ₊˚🎧⊹♡ To-Do List",
-                              command=lambda: controller.show_frame("TodoListPage"),
-                              font=("Arial", 14, "bold"), fg="#658e5d",
-                              width=20, height=2)
+        todo_btn = tk.Button(button_frame, text="⋆｡⟡˚⊹⋆ To-Do List ⋆⊹˚⟡｡⋆",
+                             command=lambda: controller.show_frame("TodoListPage"),
+                             font=("Georgia", 20, "bold"), fg="#e664aa", bg="#ffffff",
+                             width=20, height=2)
         todo_btn.pack(pady=10)
 
-        quit_btn = tk.Button(button_frame, text="Quit", 
+        quit_btn = tk.Button(button_frame, text="⋆｡⟡˚⊹⋆ Quit ⋆⊹˚⟡｡⋆", 
                             command=self.controller.quit,
-                            font=("Arial", 14, "bold"), bg="#95a5a6", fg="red",
+                            font=("Georgia", 20, "bold"), fg="#969696", bg="#ffffff",
                             width=20, height=2)
         quit_btn.pack(pady=10)
+
 
 class SleepTrackerPage(tk.Frame):
     """Sleep trackin page, we are converting sleep_tracker function to GUI!"""
     def __init__(self, parent, controller):
         tk.Frame.__init__(self, parent)
-        self.configure(bg='#2c3e50')
+        self.configure(bg='#bedcf0')
         self.root = parent
         self.controller = controller
         
         # Page title
-        title_label = tk.Label(self, text="ᶻ z 𐰁₊˚⋆ Sleep Tracker", 
-                              font=("Arial", 20, "bold"), 
-                              bg='#2c3e50', fg='#ecf0f1')
+        title_label = tk.Label(self, text="Sleep Tracker", 
+                              font=("Georgia", 40, "bold"), 
+                              bg='#bedcf0', fg='#648ce6')
         title_label.pack(pady=20)
         
         # Input section
-        input_frame = tk.Frame(self, bg='#34495e', relief='raised', bd=2)
+        input_frame = tk.Frame(self, bg='#bedcf0', relief='raised', bd=2)
         input_frame.pack(pady=20, padx=50, fill='x')
         
         # Month selection
-        tk.Label(input_frame, text="Month:", font=("Arial", 12), 
-                bg='#34495e', fg='#ecf0f1').grid(row=0, column=0, sticky='w', padx=10, pady=10)
+        tk.Label(input_frame, text="Month:", font=("Georgia", 15, "bold"), 
+                bg='#bedcf0', fg='#648ce6').grid(row=0, column=0, sticky='w', padx=10, pady=10)
         
         self.month_var = tk.StringVar()
-        month_combo = ttk.Combobox(input_frame, textvariable=self.month_var, width=15)
+        month_combo = ttk.Combobox(input_frame, textvariable=self.month_var, width=18)
         month_combo['values'] = ('January', 'February', 'March', 'April', 'May', 'June',
                                 'July', 'August', 'September', 'October', 'November', 'December')
         month_combo.grid(row=0, column=1, padx=10, pady=10)
-        month_combo.set('July')
+        month_combo.set('January')
         
         # Day selection
-        tk.Label(input_frame, text="Day:", font=("Arial", 12), 
-                bg='#34495e', fg='#ecf0f1').grid(row=1, column=0, sticky='w', padx=10, pady=10)
+        tk.Label(input_frame, text="Day:", font=("Georgia", 15, "bold"), 
+                bg='#bedcf0', fg='#648ce6').grid(row=1, column=0, sticky='w', padx=10, pady=10)
         
         self.day_var = tk.StringVar()
         day_spinbox = tk.Spinbox(input_frame, from_=1, to=31, textvariable=self.day_var, width=18)
         day_spinbox.grid(row=1, column=1, padx=10, pady=10)
         
         # Sleep hours
-        tk.Label(input_frame, text="Hours of Sleep:", font=("Arial", 12), 
-                bg='#34495e', fg='#ecf0f1').grid(row=2, column=0, sticky='w', padx=10, pady=10)
+        tk.Label(input_frame, text="Hours of Sleep:", font=("Georgia", 15, "bold"), 
+                bg='#bedcf0', fg='#648ce6').grid(row=2, column=0, sticky='w', padx=10, pady=10)
         
         self.hours_var = tk.StringVar()
         hours_spinbox = tk.Spinbox(input_frame, from_=0, to=24, textvariable=self.hours_var, width=18)
         hours_spinbox.grid(row=2, column=1, padx=10, pady=10)
         
         # Energy level
-        tk.Label(input_frame, text="Energy Level (1-10):", font=("Arial", 12), 
-                bg='#34495e', fg='#ecf0f1').grid(row=3, column=0, sticky='w', padx=10, pady=10)
+        tk.Label(input_frame, text="Energy Level (1-10):", font=("Georgia", 15, "bold"), 
+                bg='#bedcf0', fg='#648ce6').grid(row=3, column=0, sticky='w', padx=10, pady=10)
         
         self.energy_var = tk.StringVar()
         energy_spinbox = tk.Spinbox(input_frame, from_=1, to=10, textvariable=self.energy_var, width=18)
         energy_spinbox.grid(row=3, column=1, padx=10, pady=10)
         
         # Buttons
-        button_frame = tk.Frame(self, bg='#2c3e50')
+        button_frame = tk.Frame(self, bg='#bedcf0')
         button_frame.pack(pady=20)
         
         log_btn = tk.Button(button_frame, text="📝 Log Sleep Data", 
                            command=self.log_sleep_data,
-                           font=("Arial", 12, "bold"), bg='#3498db', fg='black')
+                           font=("Georgia", 12, "bold"), fg='#648ce6', bg='#ffffff',
+                           width=15, height=2)
         log_btn.pack(side='left', padx=10)
         
         chart_btn = tk.Button(button_frame, text="📊 View Chart", 
                              command=self.show_chart,
-                             font=("Arial", 12, "bold"), bg='#9b59b6', fg='black')
+                             font=("Georgia", 12, "bold"), fg='#648ce6', bg='#ffffff',
+                           width=15, height=2)
         chart_btn.pack(side='left', padx=10)
         
-        back_btn = tk.Button(button_frame, text="Back to Menu", 
+        back_btn = tk.Button(button_frame, text="↩️ Back to Menu", 
                             command=lambda: controller.show_frame("MainMenuPage"),
-                            font=("Arial", 12, "bold"), bg='#95a5a6', fg='black')
+                            font=("Georgia", 12, "bold"), fg='#648ce6', bg='#ffffff',
+                           width=15, height=2)
         back_btn.pack(side='left', padx=10)
         
         # Status label
         self.status_label = tk.Label(self, text="Ready to log sleep data", 
-                                    font=("Arial", 10), bg='#2c3e50', fg='#bdc3c7')
+                                    font=("Georgia", 10), bg='#bedcf0', fg='#648ce6')
         self.status_label.pack(pady=10)
         
     def log_sleep_data(self):
@@ -294,54 +299,57 @@ class HabitTrackerPage(tk.Frame):
 
     def __init__(self, parent, controller):
         tk.Frame.__init__(self, parent)
-        self.configure(bg="#5227b8")
+        self.configure(bg="#dcbef0")
         self.controller = controller
         
         # Title
-        title_label = tk.Label(self, text="⭒˚｡⋆‧₊˚✩彡 Habit Tracker", 
-                              font=("Arial", 20, "bold"), 
-                            fg="#8661dd")
+        title_label = tk.Label(self, text="Habit Tracker", 
+                              font=("Georgia", 40, "bold"), 
+                              bg= "#dcbef0", fg="#a064dc")
         title_label.pack(pady=20)
         
         # Add habit section
-        add_frame = tk.Frame(self, bg="#8661dd", relief='raised', bd=2)
+        add_frame = tk.Frame(self, bg="#dcbef0", relief='raised', bd=2)
         add_frame.pack(pady=10, padx=50, fill='x')
         
-        tk.Label(add_frame, text="Add New Habit:", font=("Arial", 12, "bold"), 
-                bg="#8661dd", fg='#ecf0f1').pack(pady=10)
+        tk.Label(add_frame, text="Add New Habit:", font=("Georgia", 12, "bold"), 
+                bg="#dcbef0", fg='#a064dc').pack(pady=10)
         
-        self.habit_entry = tk.Entry(add_frame, font=("Arial", 12), width=30)
+        self.habit_entry = tk.Entry(add_frame, font=("Georgia", 12), width=30)
         self.habit_entry.pack(pady=5)
         
-        add_btn = tk.Button(add_frame, text="Add Habit", 
+        add_btn = tk.Button(add_frame, text="➕ Add Habit", 
                            command=self.add_habit,
-                           font=("Arial", 10, "bold"))
+                           font=("Georgia", 10, "bold"), fg='#a064dc',
+                           width=15, height=2)
         add_btn.pack(pady=10)
         
         # Habits display section
-        display_frame = tk.Frame(self, bg="#8661dd", relief='raised', bd=2)
+        display_frame = tk.Frame(self, bg="#dcbef0", relief='raised', bd=2)
         display_frame.pack(pady=10, padx=50, fill='both', expand=True)
         
-        tk.Label(display_frame, text="Your Habits:", font=("Arial", 12, "bold"), 
-                 bg="#8661dd", fg='#ecf0f1').pack(pady=10)
+        tk.Label(display_frame, text="Your Habits:", font=("Georgia", 12, "bold"), 
+                 bg="#dcbef0", fg='#a064dc').pack(pady=10)
         
         # Scrollable listbox for habits
-        self.habits_listbox = tk.Listbox(display_frame, font=("Arial", 11), height=8)
+        self.habits_listbox = tk.Listbox(display_frame, font=("Georgia", 11), height=8)
         self.habits_listbox.pack(pady=10, padx=20, fill='both', expand=True)
         
         # Complete habit button
-        complete_btn = tk.Button(display_frame, text="Mark as Completed ᯓ★", 
+        complete_btn = tk.Button(display_frame, text="☑️ Mark as Completed", 
                                 command=self.complete_habit,
-                                font=("Arial", 10, "bold"), bg="#61a867")
+                                font=("Georgia", 10, "bold"), bg="#dcbef0", fg='#a064dc',
+                                width=15, height=2)
         complete_btn.pack(pady=10)
         
         # Navigation
         nav_frame = tk.Frame(self, bg='#2c3e50')
         nav_frame.pack(pady=20)
         
-        back_btn = tk.Button(nav_frame, text="Back to Menu", 
+        back_btn = tk.Button(nav_frame, text="↩️ Back to Menu", 
                             command=lambda: controller.show_frame("MainMenuPage"),
-                            font=("Arial", 12, "bold"), bg="#61a867")
+                            font=("Georgia", 12, "bold"), bg="#dcbef0", fg='#a064dc',
+                            width=15, height=2)
         back_btn.pack()
         
         # Refresh the habits list when page loads
@@ -388,56 +396,59 @@ class TodoListPage(tk.Frame):
     
     def __init__(self, parent, controller):
         tk.Frame.__init__(self, parent)
-        self.configure(bg="#a9d385") # this will change the back ground of the whole page
+        self.configure(bg="#f0bedc") # this will change the back ground of the whole page
         self.controller = controller
         
         # Title
-        title_label = tk.Label(self, text="📝 To-Do List", 
-                              font=("Arial", 20, "bold"), 
+        title_label = tk.Label(self, text="To-Do List", 
+                              font=("Georgia", 40, "bold"), 
                               #if bg is not changes to the one in configure you will see a box with this color around the title
-                              bg="#91aa7b", fg='#ecf0f1') 
+                              bg="#f0bedc", fg="#e664aa") 
         title_label.pack(pady=20)
         
         # Add task section
-        add_frame = tk.Frame(self, bg="#bff28c", relief='raised', bd=2) # bg here changes the color in the first box at the top of this page
+        add_frame = tk.Frame(self, bg="#f0bedc", relief='raised', bd=2) # bg here changes the color in the first box at the top of this page
         add_frame.pack(pady=10, padx=50, fill='x')
         
-        tk.Label(add_frame, text="Add New Task:", font=("Arial", 12, "bold"), 
+        tk.Label(add_frame, text="Add New Task:", font=("Georgia", 12, "bold"), 
                  # fg here will change color of the text
-                bg="#bff28c", fg="#5858cc").pack(pady=10) # bg will make sure the textbox of "add new task" is the same as above or diff
+                bg="#f0bedc", fg="#e664aa").pack(pady=10) # bg will make sure the textbox of "add new task" is the same as above or diff
         
-        self.task_entry = tk.Entry(add_frame, font=("Arial", 12), width=30)
+        self.task_entry = tk.Entry(add_frame, font=("Georgia", 12), width=30)
         self.task_entry.pack(pady=5)
         
-        add_btn = tk.Button(add_frame, text="Add Task", 
+        add_btn = tk.Button(add_frame, text="➕ Add Task", 
                            command=self.add_task,
-                           font=("Arial", 10, "bold"), bg="#bff28c")
+                           font=("Georgia", 10, "bold"), bg="#f0bedc", fg="#e664aa",
+                           width=15, height=2)
         add_btn.pack(pady=10)
         
         # Tasks display section
-        display_frame = tk.Frame(self, bg="#bff28c", relief='raised', bd=2)
+        display_frame = tk.Frame(self, bg="#f0bedc", relief='raised', bd=2)
         display_frame.pack(pady=10, padx=50, fill='both', expand=True)
         
-        tk.Label(display_frame, text="Your Tasks:", font=("Arial", 12, "bold"), 
-                bg="#bff28c", fg="#5858cc").pack(pady=10)
+        tk.Label(display_frame, text="Your Tasks:", font=("Georgia", 12, "bold"), 
+                bg="#f0bedc", fg="#e664aa").pack(pady=10)
         
         # Scrollable listbox for tasks
-        self.tasks_listbox = tk.Listbox(display_frame, font=("Arial", 11), height=8)
+        self.tasks_listbox = tk.Listbox(display_frame, font=("Georgia", 11), height=8)
         self.tasks_listbox.pack(pady=10, padx=20, fill='both', expand=True)
         
         # Complete task button
-        complete_btn = tk.Button(display_frame, text="Mark as Completed", 
+        complete_btn = tk.Button(display_frame, text="☑️ Mark as Completed", 
                                 command=self.complete_task,
-                                font=("Arial", 10, "bold"), bg='#f39c12')
+                                font=("Georgia", 10, "bold"), bg="#f0bedc", fg="#e664aa",
+                           width=15, height=2)
         complete_btn.pack(pady=10)
         
         # Navigation
-        nav_frame = tk.Frame(self, bg='#2c3e50')
+        nav_frame = tk.Frame(self, bg="#f0bedc")
         nav_frame.pack(pady=20)
         
-        back_btn = tk.Button(nav_frame, text="Back to Menu", 
+        back_btn = tk.Button(nav_frame, text="↩️ Back to Menu", 
                             command=lambda: controller.show_frame("MainMenuPage"),
-                            font=("Arial", 12, "bold"), bg='#95a5a6')
+                            font=("Georgia", 12, "bold"), bg="#f0bedc", fg="#e664aa",
+                           width=15, height=2)
         back_btn.pack()
         
         # Refresh the tasks list when page loads
