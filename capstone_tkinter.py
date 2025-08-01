@@ -186,7 +186,7 @@ class SleepTrackerPage(tk.Frame):
         
         # Status label
         self.status_label = tk.Label(self, text="Ready to log sleep data", 
-                                    font=("Georgia", 10), bg='#bedcf0', fg='#648ce6')
+                                    font=("Georgia", 12), bg='#bedcf0', fg='#648ce6')
         self.status_label.pack(pady=10)
         
     def log_sleep_data(self):
